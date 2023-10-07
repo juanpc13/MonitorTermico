@@ -1,18 +1,22 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include <ListaPruebas.h>
+#include <Tablero.h>
+#include <Menus.h>
+#include <Pantalla.h>
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void setup()
+{
+  CargarListaPruebas();
+  IniciarPantalla();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop()
+{
+  char key = keypad.getKey();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  if (key != NO_KEY){
+    //ActualizarUI();
+    Serial.println(key);
+  }
 }
