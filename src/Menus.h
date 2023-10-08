@@ -2,7 +2,7 @@
 
 void PantallaInicial()
 {
-
+    
 }
 
 void PantallaSelecionarPrueba(int selecion)
