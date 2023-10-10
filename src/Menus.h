@@ -1,5 +1,10 @@
 #include <Arduino.h>
 
+int pantallaActual = 0;
+int pruebaSeleccionada = 0;
+
+int estadoPrueba = 0;
+
 void(* resetFunc) (void) = 0;
 
 void PantallaInicial()
@@ -20,7 +25,7 @@ bool NeedZeroDigit(int val)
     return val < 10;
 }
 
-String timeToWatch(int segundos)
+String TimeToWatch(int segundos)
 {
     int horas = segundos / 3600;          // 1 hora = 3600 segundos
     int minutos = (segundos % 3600) / 60; // 1 minuto = 60 segundos
@@ -40,10 +45,10 @@ String timeToWatch(int segundos)
 
 void PantallaSelecionarPrueba()
 {
-    PruebaTermica prueba = pruebasTermicas[TOTAL_PRUEBAS];
+    String salida = "";
+    PruebaTermica prueba = pruebasTermicas[pruebaSeleccionada];
     lcd.clear();
     lcd.setCursor(0,0);
-    String salida = "";
     salida = "Material:";
     salida += prueba.material;
     lcd.print(salida);
@@ -54,7 +59,7 @@ void PantallaSelecionarPrueba()
     lcd.print(salida);
     lcd.setCursor(0,2);
     salida = "Tiempo:";
-    salida += timeToWatch(prueba.tiempo);
+    salida += TimeToWatch(prueba.tiempo);
     lcd.print(salida);
     lcd.setCursor(0,3);
     lcd.print("Iniciar-Cambiar ");
@@ -62,13 +67,21 @@ void PantallaSelecionarPrueba()
 
 void PantallaEstadoPrueba()
 {
+    String salida = "";
     lcd.clear();
     lcd.setCursor(0,0);
-    lcd.print("TermoCupla:9999C");
+    salida = "TermoCupla:";
+    salida += ReadCelsius();
+    salida += "C";
+    lcd.print(salida);
     lcd.setCursor(0,1);
-    lcd.print("Total - 99:59:59");
+    salida = "Total - ";
+    salida += "99:59:59";//CONTINUAR
+    lcd.print(salida);
     lcd.setCursor(0,2);
-    lcd.print("Probeta-99:59:59");
+    salida = "Probeta-";
+    salida += "99:59:59";//CONTINUAR
+    lcd.print(salida);
     lcd.setCursor(0,3);
     //PAUSAR-CONTINUAR-INICIO
     if(estadoPrueba == 0)
@@ -84,11 +97,6 @@ void PantallaEstadoPrueba()
         lcd.print("Inicio - Apagar ");
     }
 }
-
-int pantallaActual = 0;
-int pruebaSeleccionada = 0;
-
-int estadoPrueba = 0;
 
 void ActualizarUI()
 {

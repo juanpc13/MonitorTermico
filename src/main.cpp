@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include <TermoCupla.h>
 #include <ListaPruebas.h>
 #include <Tablero.h>
 #include <Menus.h>
