@@ -12,6 +12,12 @@ void setup()
 {
   CargarListaPruebas();
   IniciarPantalla();
+  char key = keypad.getKey();
+  while(key == NO_KEY)
+  {
+    key = keypad.getKey();
+    delay(500);
+  }
   lastTime = millis();
 }
 
@@ -34,13 +40,14 @@ void loop()
   if (key != NO_KEY){
     if(key == '#')
     {
-
+      BtnIzquierda();
     }
     else if(key == '*')
     {
-
+      BtnDerecha();
     }
     ActualizarUI();
     Serial.println(key);
+    delay(500);
   }
 }
