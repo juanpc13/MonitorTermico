@@ -3,15 +3,14 @@
 #include <TermoCupla.h>
 #include <ListaPruebas.h>
 #include <Tablero.h>
-#include <Menus.h>
 #include <Pantalla.h>
+#include <Menus.h>
 
 #define ONE_SECOND 1000
 unsigned long lastTime;
 
 void setup()
 {
-  CargarListaPruebas();
   IniciarPantalla();
   char key = keypad.getKey();
   while(key == NO_KEY)
@@ -27,7 +26,7 @@ void OneSecond()
   unsigned long currentTime = millis();
   if(currentTime - lastTime >= ONE_SECOND)
   {
-    ActualizarUI();
+    ActualizarUI('-');
     lastTime = currentTime;
   }
 }
@@ -47,7 +46,8 @@ void loop()
     {
       BtnDerecha();
     }
-    ActualizarUI();
+
+    ActualizarUI(key);
     Serial.println(key);
     delay(500);
   }
