@@ -97,6 +97,36 @@ void UpdatePrueba(char caracter)
     }
 }
 
+int tiempoTotal = 0;
+void TiempoTotalOneSecond()
+{
+    tiempoTotal++;
+}
+
+int tiempoTotalPrueba = 0;
+bool pause = false;
+bool tempWasReach = false;
+void TiempoTotalPruebaOneSecond()
+{
+    if(!pause && tempWasReach)
+    {
+        tiempoTotalPrueba++;
+    }
+}
+void UpdateTempWasReach()
+{
+    if(!tempWasReach)
+    {
+        //VER TEMP ACTUAL Y TEMP TARGER
+        float tempActual = ReadCelsius();
+        float tempTarget = atof(temperaturaPrueba.c_str());
+        if(tempActual >= tempTarget)
+        {
+            tempWasReach = true;
+        }
+    }
+}
+
 void PantallaEstadoPrueba()
 {
     String salida = "";
@@ -108,11 +138,11 @@ void PantallaEstadoPrueba()
     lcd.print(salida);
     lcd.setCursor(0,1);
     salida = "Total - ";
-    salida += "99:59:59";//CONTINUAR
+    salida += TimeToWatch(tiempoTotal);
     lcd.print(salida);
     lcd.setCursor(0,2);
     salida = "Probeta-";
-    salida += "99:59:59";//CONTINUAR
+    salida += TimeToWatch(tiempoTotalPrueba);
     lcd.print(salida);
     lcd.setCursor(0,3);
     //PAUSAR-CONTINUAR-INICIO
@@ -163,17 +193,21 @@ void BtnIzquierda()
         //Iniciar el monitoreo en la Prueba seleccionadas
         pantallaActual = 2;
         estadoPrueba = 0;
+        tiempoTotal = 0;
+        tiempoTotalPrueba = 0;
+        pause = false;
+        tempWasReach = false;
     }
     else if(pantallaActual == 2)
     {
         //PAUSAR-CONTINUAR-INICIO
         if(estadoPrueba == 0)
         {
-
+            pause = true;
         }
         else if(estadoPrueba == 1)
         {
-
+            pause = false;
         }
         else if(estadoPrueba == 2)
         {

@@ -25,6 +25,10 @@ void OneSecond()
   unsigned long currentTime = millis();
   if(currentTime - lastTime >= ONE_SECOND)
   {
+    UpdateTempWasReach();
+    TiempoTotalOneSecond();
+    TiempoTotalPruebaOneSecond();
+
     ActualizarUI('-');
     lastTime = currentTime;
   }
