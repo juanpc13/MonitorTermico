@@ -102,7 +102,7 @@ int TiempoDePrueba()
     int segundosTotales = atoi(tiempoPrueba.substring(6, 7).c_str());//sec
     segundosTotales += atoi(tiempoPrueba.substring(3, 4).c_str()) * 60;//min
     segundosTotales += atoi(tiempoPrueba.substring(0, 1).c_str()) * 3600 ;//hour
-    return segundosTotales
+    return segundosTotales;
 }
 
 int tiempoTotal = 0;
