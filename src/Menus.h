@@ -41,18 +41,10 @@ String TimeToWatch(int segundos)
     return horaTxt;
 }
 
-struct PruebaTermica {
-  String material;
-  String temperaturaTarget;
-  String tiempo;
-};
-PruebaTermica prueba;
-void InicializarPrueba()
-{
-    prueba.material = "       ";//7caracteres
-    prueba.temperaturaTarget = "0000";//4caracteres
-    prueba.tiempo = "00:00:00";
-}
+String materialPrueba = "       ";//7caracteres
+String temperaturaPrueba = "0000";//4caracteres
+String tiempoPrueba = "00:00:00";
+
 int labelSeleccionado = 0;
 void PantallaSelecionarPrueba()
 {
@@ -61,16 +53,16 @@ void PantallaSelecionarPrueba()
     lcd.clear();
     lcd.setCursor(0,0);
     salida = "Material:";
-    salida += prueba.material;
+    salida += materialPrueba;
     lcd.print(salida);
     lcd.setCursor(0,1);
     salida = "Temp:";
-    salida += prueba.temperaturaTarget;
+    salida += temperaturaPrueba;
     salida += "C";
     lcd.print(salida);
     lcd.setCursor(0,2);
     salida = "Tiempo:";
-    salida += prueba.tiempo;
+    salida += tiempoPrueba;
     lcd.print(salida);
     lcd.setCursor(0,3);
     lcd.print("Iniciar-Siguient");
@@ -82,26 +74,26 @@ void UpdatePrueba(char caracter)
 
     if(labelSeleccionado == 0)
     {
-        prueba.material += caracter;
-        prueba.material = prueba.material.substring(1, 7);
+        materialPrueba += caracter;
+        materialPrueba = materialPrueba.substring(1, 7);
     }
     else if(labelSeleccionado == 1)
     {
-        prueba.temperaturaTarget += caracter;
-        prueba.temperaturaTarget = prueba.temperaturaTarget.substring(1, 5);
+        temperaturaPrueba += caracter;
+        temperaturaPrueba = temperaturaPrueba.substring(1, 5);
     }
     else if(labelSeleccionado == 2)
     {
-        String currentTxt = prueba.tiempo;
-        currentTxt += prueba.tiempo.substring(0, 1);
-        currentTxt += prueba.tiempo.substring(3, 4);
-        currentTxt += prueba.tiempo.substring(6, 7);
+        String currentTxt = tiempoPrueba;
+        currentTxt += tiempoPrueba.substring(0, 1);
+        currentTxt += tiempoPrueba.substring(3, 4);
+        currentTxt += tiempoPrueba.substring(6, 7);
         currentTxt += caracter;
-        prueba.tiempo = currentTxt.substring(1, 2);
-        prueba.tiempo += ':';
-        prueba.tiempo += currentTxt.substring(4, 5);
-        prueba.tiempo += ':';
-        prueba.tiempo += currentTxt.substring(7, 8);
+        tiempoPrueba = currentTxt.substring(1, 2);
+        tiempoPrueba += ':';
+        tiempoPrueba += currentTxt.substring(4, 5);
+        tiempoPrueba += ':';
+        tiempoPrueba += currentTxt.substring(7, 8);
     }
 }
 
