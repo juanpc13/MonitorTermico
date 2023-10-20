@@ -10,6 +10,7 @@ unsigned long lastTime;
 
 void setup()
 {
+  pinMode(LED_BUILTIN, OUTPUT);
   IniciarPantalla();
   char key = keypad.getKey();
   while(key == NO_KEY)
@@ -25,6 +26,7 @@ void OneSecond()
   unsigned long currentTime = millis();
   if(currentTime - lastTime >= ONE_SECOND)
   {
+    UpdateLedStatus();
     UpdateTempWasReach();
     TiempoTotalOneSecond();
     TiempoTotalPruebaOneSecond();

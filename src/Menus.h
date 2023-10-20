@@ -97,6 +97,14 @@ void UpdatePrueba(char caracter)
     }
 }
 
+int TiempoDePrueba()
+{
+    int segundosTotales = atoi(tiempoPrueba.substring(6, 7).c_str());//sec
+    segundosTotales += atoi(tiempoPrueba.substring(3, 4).c_str()) * 60;//min
+    segundosTotales += atoi(tiempoPrueba.substring(0, 1).c_str()) * 3600 ;//hour
+    return segundosTotales
+}
+
 int tiempoTotal = 0;
 void TiempoTotalOneSecond()
 {
@@ -110,7 +118,7 @@ bool tempWasReach = false;
 void TiempoTotalPruebaOneSecond()
 {
     if(stop) return;
-    
+
     if(!pause && tempWasReach)
     {
         tiempoTotalPrueba++;
@@ -127,6 +135,26 @@ void UpdateTempWasReach()
         {
             tempWasReach = true;
         }
+    }
+}
+void UpdateLedStatus()
+{
+    if(estadoPrueba == 0 && pantallaActual == 2)
+    {
+        int secsDePrueba = tiempoTotalPrueba;
+        int secsMaxDePrueba = TiempoDePrueba();
+        if(secsDePrueba >= secsMaxDePrueba)
+        {
+            digitalWrite(LED_BUILTIN, HIGH);
+        }
+        else
+        {
+            digitalWrite(LED_BUILTIN, LOW);
+        }
+    }
+    else
+    {
+        digitalWrite(LED_BUILTIN, LOW);
     }
 }
 
