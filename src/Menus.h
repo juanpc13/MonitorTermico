@@ -105,9 +105,12 @@ void TiempoTotalOneSecond()
 
 int tiempoTotalPrueba = 0;
 bool pause = false;
+bool stop = false;
 bool tempWasReach = false;
 void TiempoTotalPruebaOneSecond()
 {
+    if(stop) return;
+    
     if(!pause && tempWasReach)
     {
         tiempoTotalPrueba++;
@@ -197,6 +200,7 @@ void BtnIzquierda()
         tiempoTotalPrueba = 0;
         pause = false;
         tempWasReach = false;
+        stop = false;
     }
     else if(pantallaActual == 2)
     {
@@ -241,11 +245,11 @@ void BtnDerecha()
         //DETENER-DETENER-APAGAR
         if(estadoPrueba == 0)
         {
-
+            stop = true;
         }
         else if(estadoPrueba == 1)
         {
-
+            stop = true;
         }
         else if(estadoPrueba == 2)
         {
