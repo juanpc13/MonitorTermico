@@ -41,6 +41,11 @@ String TimeToWatch(int segundos)
     return horaTxt;
 }
 
+struct PruebaTermica {
+  String material;
+  String temperaturaTarget;
+  String tiempo;
+};
 PruebaTermica prueba;
 void InicializarPrueba()
 {
