@@ -16,8 +16,9 @@ void setup()
   while(key == NO_KEY)
   {
     key = keypad.getKey();
-    delay(500);
+    delay(50);
   }
+  delay(450);
   lastTime = millis();
 }
 
@@ -43,11 +44,11 @@ void loop()
   char key = keypad.getKey();
 
   if (key != NO_KEY){
-    if(key == '#')
+    if(key == '*')
     {
       BtnIzquierda();
     }
-    else if(key == '*')
+    else if(key == '#')
     {
       BtnDerecha();
     }
