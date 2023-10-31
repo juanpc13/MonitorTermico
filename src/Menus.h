@@ -118,11 +118,10 @@ bool tempWasReach = false;
 void TiempoTotalPruebaOneSecond()
 {
     if(stop) return;
+    if(pause) return;
+    if(!tempWasReach) return;
 
-    if(!pause && tempWasReach)
-    {
-        tiempoTotalPrueba++;
-    }
+    tiempoTotalPrueba++;
 }
 void UpdateTempWasReach()
 {
