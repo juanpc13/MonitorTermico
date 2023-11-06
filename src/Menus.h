@@ -35,8 +35,8 @@ String TimeToWatch(int segundos)
     horaTxt += ":";
     if(NeedZeroDigit(minutos)){horaTxt += "0";}
     horaTxt += minutos;
-    if(NeedZeroDigit(segundosRestantes)){horaTxt += "0";}
     horaTxt += ":";
+    if(NeedZeroDigit(segundosRestantes)){horaTxt += "0";}
     horaTxt += segundosRestantes;
     return horaTxt;
 }
