@@ -68,6 +68,22 @@ void PantallaSelecionarPrueba()
     lcd.print("Iniciar-Siguient");
 }
 
+String eliminarCaracteres(String cadena, char caracter)
+{
+    String nuevaCadena = "";
+
+    for (int i = 1; i < cadena.length(); i++)
+    //for (int i = 0; i < cadena.Length; i++)
+    {
+        if (cadena[i] != caracter)
+        {
+            nuevaCadena += cadena[i];
+        }
+    }
+
+    return nuevaCadena;
+}
+
 void UpdatePrueba(char caracter)
 {
     if (!isdigit(caracter)) return;
@@ -84,16 +100,13 @@ void UpdatePrueba(char caracter)
     }
     else if(labelSeleccionado == 2)
     {
-        String currentTxt = tiempoPrueba;
-        currentTxt += tiempoPrueba.substring(0, 1);
-        currentTxt += tiempoPrueba.substring(3, 4);
-        currentTxt += tiempoPrueba.substring(6, 7);
+        String currentTxt = eliminarCaracteres(tiempoPrueba, ':');
         currentTxt += caracter;
-        tiempoPrueba = currentTxt.substring(1, 2);
+        tiempoPrueba = currentTxt.substring(0, 2);
         tiempoPrueba += ':';
-        tiempoPrueba += currentTxt.substring(4, 5);
+        tiempoPrueba += currentTxt.substring(2, 2);
         tiempoPrueba += ':';
-        tiempoPrueba += currentTxt.substring(7, 8);
+        tiempoPrueba += currentTxt.substring(4, 2);
     }
 }
 
