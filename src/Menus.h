@@ -71,16 +71,13 @@ void PantallaSelecionarPrueba()
 String eliminarCaracteres(String cadena, char caracter)
 {
     String nuevaCadena = "";
-
-    for (int i = 1; i < cadena.length(); i++)
-    //for (int i = 0; i < cadena.Length; i++)
+    for (int i = 0; i < cadena.length(); i++)
     {
         if (cadena[i] != caracter)
         {
             nuevaCadena += cadena[i];
         }
     }
-
     return nuevaCadena;
 }
 
@@ -101,12 +98,14 @@ void UpdatePrueba(char caracter)
     else if(labelSeleccionado == 2)
     {
         String currentTxt = eliminarCaracteres(tiempoPrueba, ':');
-        currentTxt += caracter;
-        tiempoPrueba = currentTxt.substring(0, 2);
+        tiempoPrueba = currentTxt.charAt(1);
+        tiempoPrueba += currentTxt.charAt(2);
         tiempoPrueba += ':';
-        tiempoPrueba += currentTxt.substring(2, 2);
+        tiempoPrueba += currentTxt.charAt(3);
+        tiempoPrueba += currentTxt.charAt(4);
         tiempoPrueba += ':';
-        tiempoPrueba += currentTxt.substring(4, 2);
+        tiempoPrueba += currentTxt.charAt(5);
+        tiempoPrueba += caracter;
     }
 }
 
