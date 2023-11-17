@@ -65,7 +65,7 @@ void PantallaSelecionarPrueba()
     salida += tiempoPrueba;
     lcd.print(salida);
     lcd.setCursor(0,3);
-    lcd.print("Iniciar-Siguient");
+    lcd.print("Iniciar-Siguiente");
 }
 
 String eliminarCaracteres(String cadena, char caracter)
@@ -203,7 +203,7 @@ void PantallaEstadoPrueba()
     }
     else if(estadoPrueba == 1)
     {
-        lcd.print("Continua-Detener");
+        lcd.print("Continuar - Detener");
     }
     else if(estadoPrueba == 2)
     {
@@ -266,6 +266,12 @@ void BtnIzquierda()
             pantallaActual = 0;
             estadoPrueba = 0;
         }
+
+        estadoPrueba++;
+        if(estadoPrueba >= 3)
+        {
+            estadoPrueba = 0;
+        }
     }
 }
 
@@ -303,6 +309,12 @@ void BtnDerecha()
         {
             lcd.clear();
             resetFunc();
+        }
+
+        estadoPrueba++;
+        if(estadoPrueba >= 3)
+        {
+            estadoPrueba = 0;
         }
     }
 }
