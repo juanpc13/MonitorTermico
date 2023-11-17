@@ -111,9 +111,18 @@ void UpdatePrueba(char caracter)
 
 int TiempoDePrueba()
 {
-    int segundosTotales = atoi(tiempoPrueba.substring(6, 7).c_str());//sec
-    segundosTotales += atoi(tiempoPrueba.substring(3, 4).c_str()) * 60;//min
-    segundosTotales += atoi(tiempoPrueba.substring(0, 1).c_str()) * 3600 ;//hour
+    String pairTXT = "";//00:00:00
+    pairTXT = tiempoPrueba.charAt(6);
+    pairTXT += tiempoPrueba.charAt(7);
+    int segundosTotales = atoi(pairTXT.c_str());//sec
+    
+    pairTXT = tiempoPrueba.charAt(3);
+    pairTXT += tiempoPrueba.charAt(4);
+    segundosTotales += atoi(pairTXT.c_str()) * 60;//min
+
+    pairTXT = tiempoPrueba.charAt(0);
+    pairTXT += tiempoPrueba.charAt(1);
+    segundosTotales += atoi(pairTXT.c_str()) * 3600 ;//hour
     return segundosTotales;
 }
 
