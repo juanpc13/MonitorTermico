@@ -125,6 +125,10 @@ int TiempoDePrueba()
     segundosTotales += atoi(pairTXT.c_str()) * 3600 ;//hour
     return segundosTotales;
 }
+int tiempoTotalPrueba = 0;
+bool pause = false;
+bool stop = false;
+bool tempWasReach = false;
 
 int tiempoTotal = 0;
 void TiempoTotalOneSecond()
@@ -133,10 +137,6 @@ void TiempoTotalOneSecond()
     tiempoTotal++;
 }
 
-int tiempoTotalPrueba = 0;
-bool pause = false;
-bool stop = false;
-bool tempWasReach = false;
 void TiempoTotalPruebaOneSecond()
 {
     if(stop) return;
