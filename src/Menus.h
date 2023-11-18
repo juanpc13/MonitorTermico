@@ -129,6 +129,7 @@ int TiempoDePrueba()
 int tiempoTotal = 0;
 void TiempoTotalOneSecond()
 {
+    if(stop) return;
     tiempoTotal++;
 }
 
