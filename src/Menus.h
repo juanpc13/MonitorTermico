@@ -253,24 +253,20 @@ void BtnIzquierda()
     else if(pantallaActual == 2)
     {
         //PAUSAR-CONTINUAR-INICIO
-        if(estadoPrueba == 0)
-        {
-            pause = true;
-        }
-        else if(estadoPrueba == 1)
-        {
-            pause = false;
-        }
-        else if(estadoPrueba == 2)
+        if(stop)
         {
             pantallaActual = 0;
             estadoPrueba = 0;
         }
-
-        estadoPrueba++;
-        if(estadoPrueba >= 3)
+        else if(estadoPrueba == 0)
+        {
+            estadoPrueba = 1;
+            pause = true;
+        }
+        else if(estadoPrueba == 1)
         {
             estadoPrueba = 0;
+            pause = false;
         }
     }
 }
@@ -299,6 +295,7 @@ void BtnDerecha()
         //DETENER-DETENER-APAGAR
         if(estadoPrueba == 0 || estadoPrueba == 1)
         {
+            estadoPrueba = 2;
             stop = true;
         }
         else if(estadoPrueba == 2)
