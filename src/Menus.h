@@ -297,11 +297,7 @@ void BtnDerecha()
     else if(pantallaActual == 2)
     {
         //DETENER-DETENER-APAGAR
-        if(estadoPrueba == 0)
-        {
-            stop = true;
-        }
-        else if(estadoPrueba == 1)
+        if(estadoPrueba == 0 || estadoPrueba == 1)
         {
             stop = true;
         }
@@ -309,12 +305,6 @@ void BtnDerecha()
         {
             lcd.clear();
             resetFunc();
-        }
-
-        estadoPrueba++;
-        if(estadoPrueba >= 3)
-        {
-            estadoPrueba = 0;
         }
     }
 }
